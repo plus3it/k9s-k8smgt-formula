@@ -1,40 +1,25 @@
-## repo-template
+## k9s-k8smgt-formula
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-### [1.2.1] (https://github.com/plus3it/repo-template/releases/tag/1.2.1)
+### 0.1.0
+
+**Released**: 2026.04.17
 
 **Summary**:
 
-*   Updated README.md to include config settings for github
+*   Updated README.md to reflect this project's layout and automation-capabilities
 *   Updated LICENSE copyright year
+*   Seed automation-content with content generated from https://github.com/saltstack-formulas/template-formula
+*   Tailor seed content to branch based on platform
+*   Add platform-content for Enterprise Linux targets
 
-### [1.2.0] (https://github.com/plus3it/repo-template/releases/tag/1.2.0)
+### 0.0.0
 
-**Summary**:
-
-*   Updated SHA value for Github Actions Workflows
-*   Updated CHANGELOG.template.md file
-*   Added Master branch in release workflow logic to make migration to Github Actions more efficient
-
-### 1.1.0
-
-**Commit Delta**: N/A
-
-**Released**: 2023.01.27
+**Released**: 2026.04.16
 
 **Summary**:
 
-*   Updated workflow files to be consumable and reusable, and now points to actions-workflows repo
-
-### 1.0.0
-
-**Commit Delta**: N/A
-
-**Released**: 2023.01.10
-
-**Summary**:
-
-*   Initial release of capability
+*   Initialize project with content from https://github.com/plus3it/repo-template
