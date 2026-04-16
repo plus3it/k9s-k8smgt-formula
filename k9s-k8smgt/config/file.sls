@@ -9,20 +9,8 @@
 
 include:
   - {{ sls_package_install }}
-
-k9s-k8smgt-config-file-file-managed:
-  file.managed:
-    - name: {{ k9s_k8smgt.config }}
-    - source: {{ files_switch(['example.tmpl'],
-                              lookup='k9s-k8smgt-config-file-file-managed'
-                 )
-              }}
-    - mode: 644
-    - user: root
-    - group: {{ k9s_k8smgt.rootgroup }}
-    - makedirs: True
-    - template: jinja
-    - require:
-      - sls: {{ sls_package_install }}
-    - context:
-        k9s_k8smgt: {{ k9s_k8smgt | json }}
+{%- if grains.kernel == "Linux" %}
+  - k9s-k8smgt.config.lin_file
+{%- elif grains.kernel == "Windows" %}
+  - k9s-k8smgt.config.win_file
+{%- endif %}

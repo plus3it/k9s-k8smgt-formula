@@ -5,14 +5,5 @@
 ---
 values:
   pkg:
-    name: k9s-k8smgt
-  rootgroup: root
-  config: '/etc/k9s-k8smgt'
-  service:
-    name: k9s-k8smgt
-  subcomponent:
-    config: '/etc/k9s-k8smgt-subcomponent-formula.conf'
-  # Just here for testing
-  added_in_defaults: defaults_value
-  winner: defaults
+    name: ''
 ...
