@@ -7,10 +7,9 @@
 {%- from tplroot ~ "/map.jinja" import mapdata as k9s_k8smgt with context %}
 
 include:
-  - {{ sls_service_clean }}
+{%- if grains.kernel == "Linux" %}
+  - k9s-k8smgt.config.lin_clean
+{%- elif grains.kernel == "Windows" %}
+  - k9s-k8smgt.config.win_clean
+{%- endif %}
 
-k9s-k8smgt-config-clean-file-absent:
-  file.absent:
-    - name: {{ k9s_k8smgt.config }}
-    - require:
-      - sls: {{ sls_service_clean }}

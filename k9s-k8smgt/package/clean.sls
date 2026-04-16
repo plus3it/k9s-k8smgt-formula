@@ -7,10 +7,8 @@
 {%- from tplroot ~ "/map.jinja" import mapdata as k9s_k8smgt with context %}
 
 include:
-  - {{ sls_config_clean }}
-
-k9s-k8smgt-package-clean-pkg-removed:
-  pkg.removed:
-    - name: {{ k9s_k8smgt.pkg.name }}
-    - require:
-      - sls: {{ sls_config_clean }}
+{%- if grains.kernel == "Linux" %}
+  - k9s-k8smgt.package.lin_clean
+{%- elif grains.kernel == "Windows" %}
+  - k9s-k8smgt.package.win_clean
+{%- endif %}
