@@ -18,4 +18,27 @@ This formula is able to install the K9s CLI utility on both Linux[^1] and Window
 - [k9s-k8smgt.package.clean](#k9s-k8smgt.package.clean)
 - [k9s-k8smgt.config](#k9s-k8smgt.config)
 - [k9s-k8smgt.config.clean](#k9s-k8smgt.config.clean)
-`
+
+### k9s-k8smgt
+
+Executes the `package` and `config` states to install and configure the K9S CLI utility for managing Kubernetes clusters. This includes the utility's binaries and user-configuration template files.
+
+### k9s-k8smgt.clean
+
+Executes the `package` and `config` states' `clean` actions to fully uninstall the K9S CLI utility for managing Kubernetes clusters. This includes uninstalling the binaries and user-configuration template files.
+
+### k9s-k8smgt.package
+
+Executes the `package` state to install the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's binaries.
+
+### k9s-k8smgt.package.clean
+
+Executes the `package` state's `clean` function to uninstall the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's binaries.
+
+### k9s-k8smgt.config
+
+Executes the `config` state to install the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's user-configuration template files.
+
+### k9s-k8smgt.config.clean
+
+Executes the `config` state's `clean` function to uninstall the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's user-configuration template files.
