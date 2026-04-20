@@ -10,7 +10,7 @@
 
 Add K9s to System PATH:
   win_path.exists:
-    - name: 'C:\Program Files\K9S'
+    - name: 'C:\\Program Files\\K9S'
     - require:
       - archive: Extract K9s Bundle
 
@@ -33,8 +33,7 @@ Extract K9s Bundle:
 Refresh Environment:
   cmd.run:
     - name: |
-        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVaria
-ble("Path","User")
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
     - onchanges:
       - win_path: Add K9s to System PATH
     - shell: powershell

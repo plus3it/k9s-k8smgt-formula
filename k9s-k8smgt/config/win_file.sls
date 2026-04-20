@@ -8,18 +8,18 @@
 {% set k9s_rel_path = 'AppData\\Local\\k9s' %}
 
 {% for known_local_user in k9s_k8smgt.config.initial_users %}
-Configure K9s for {{ user }}:
+Configure K9s for {{ known_local_user }}:
   file.managed:
     - makedirs: True
-    - name: 'C:\\Users\\{{ known_local_user }}\\{{ k9s_config_dir }}\\config.yaml'
+    - name: 'C:\\Users\\{{ known_local_user }}\\{{ k9s_rel_path }}\\config.yaml'
     - require:
       - archive: 'Extract K9s Bundle'
-    - source: salt://{{ tplroot }}/files/k9s_config.yaml
+    - source: salt://{{ tplroot }}/files/config.yaml
 
-Configure K9s Skins for {{ user }}:
+Configure K9s Skins for {{ known_local_user }}:
   file.recurse:
     - makedirs: True
-    - name: 'C:\Users\{{ user }}\{{ k9s_config_dir }}\skins'
+    - name: 'C:\\Users\\{{known_local_user }}\\{{ k9s_rel_path }}\\skins'
     - require:
       - file: 'Ensure K9s Skins Directory Exists'
     - source: salt://{{ tplroot }}/files/skins
@@ -27,7 +27,7 @@ Configure K9s Skins for {{ user }}:
 
 Ensure K9s Skins Directory Exists:
   file.directory:
-    - name: 'C:\Users\Default\{{ k9s_rel_path }}\skins'
+    - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\skins'
     - makedirs: True
     - user: System
     - group: Administrators
@@ -39,7 +39,7 @@ Seed K9s Config for Future Users:
     - group: Administrators
     - makedirs: True
     - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\config.yaml'
-    - source: salt://{{ tplroot }}/files/k9s_config.yaml
+    - source: salt://{{ tplroot }}/files/config.yaml
     - user: System
 
 Seed K9s Skins for Future Users:
