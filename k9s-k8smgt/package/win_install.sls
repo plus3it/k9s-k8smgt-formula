@@ -5,7 +5,8 @@
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as k9s_k8smgt with context %}
 
-{%- set stage_file = '/tmp/k9s_linux_amd64.rpm' %}
+{%- set temp_dir = salt['environ.get']('TEMP', 'C:\\temp') %}
+{%- set stage_file = temp_dir ~ '\\k9s_windows_amd64.zip' %}
 
 Stage K9s Windows Archive:
   file.managed:
