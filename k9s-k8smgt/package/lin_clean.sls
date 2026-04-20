@@ -8,5 +8,5 @@
 {%- set stage_file = '/tmp/k9s_linux_amd64.rpm' %}
 
 Install K9s RPM:
-  pkg.installed:
+  pkg.removed:
     - name: 'k9s'
