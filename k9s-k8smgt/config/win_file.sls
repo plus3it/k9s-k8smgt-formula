@@ -32,10 +32,30 @@ Download K9s Skin {{ skin_name }}:
     - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\skins\\{{ skin_name }}'
     - source: {{ skin_url }}
     - skip_verify: True
+    - ignore_errors: True
     - require:
       - file: 'Ensure K9s Skins Directory Exists'
     - require_in:
       - file: Seed K9s Skins for Future Users
+
+Notify Failure for {{ skin_name }}:
+  test.configurable_test_state:
+    - name: 'Skin Download Alert'
+    - comment: |
+        --------------------------------------------------
+        SKIN DOWNLOAD WARNING:
+        ----------------------
+          The requested URI
+
+            {{ skin_url }}
+
+          returned an error and could not be cached.
+          Ensure the URI is correct and reachable from
+          this host and update inputs as necessary.
+        --------------------------------------------------
+    - result: True
+    - onfail:
+      - file: Download K9s Skin {{ skin_name }}
 {%- endfor %}
 
 Ensure K9s Skins Directory Exists:
