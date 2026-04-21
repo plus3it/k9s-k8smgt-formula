@@ -25,6 +25,19 @@ Configure K9s Skins for {{ known_local_user }}:
     - source: salt://{{ tplroot }}/files/skins
 {% endfor %}
 
+{%- for skin_url in k9s_k8smgt.config.skins %}
+{%- set skin_name = skin_url.split('/')[-1] %}
+Download K9s Skin {{ skin_name }}:
+  file.managed:
+    - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\skins\\{{ skin_name }}'
+    - source: {{ skin_url }}
+    - skip_verify: True
+    - require:
+      - file: 'Ensure K9s Skins Directory Exists'
+    - require_in:
+      - file: Seed K9s Skins for Future Users
+{%- endfor %}
+
 Ensure K9s Skins Directory Exists:
   file.directory:
     - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\skins'

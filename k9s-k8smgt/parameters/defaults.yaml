@@ -8,4 +8,9 @@ values:
     name: ''
   config:
     initial_users: Null
+    skins:
+      - https://raw.githubusercontent.com/catppuccin/k9s/main/dist/catppuccin-mocha.yaml
+      - https://raw.githubusercontent.com/dracula/k9s/master/dist/dracula.yaml
+      - https://raw.githubusercontent.com/nordtheme/k9s/main/dist/nord.yaml
+      - https://raw.githubusercontent.com/tokyo-night/k9s/main/dist/tokyo-night.yaml
 ...
