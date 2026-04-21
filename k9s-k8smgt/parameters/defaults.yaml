@@ -9,9 +9,9 @@ values:
   config:
     initial_users: Null
     skins:
-      - https://raw.githubusercontent.com/catppuccin/k9s/main/dist/catppuccin-mocha.yaml
-      - https://raw.githubusercontent.com/derailed/k9s/master/skins/dracula.yaml
-      - https://raw.githubusercontent.com/derailed/k9s/master/skins/nord.yaml
-      - https://raw.githubusercontent.com/axkirillov/k9s-tokyonight/main/skin.yml
-      - https://raw.githubusercontent.com/derailed/k9s/master/skins/gruvbox-dark.yaml
+      catppuccin-mocha: https://raw.githubusercontent.com/catppuccin/k9s/main/dist/catppuccin-mocha.yaml
+      dracula: https://raw.githubusercontent.com/derailed/k9s/master/skins/dracula.yaml
+      nord: https://raw.githubusercontent.com/derailed/k9s/master/skins/nord.yaml
+      tokyonight: https://raw.githubusercontent.com/axkirillov/k9s-tokyonight/main/skin.yml
+      gruvbox-dark: https://raw.githubusercontent.com/derailed/k9s/master/skins/gruvbox-dark.yaml
 ...

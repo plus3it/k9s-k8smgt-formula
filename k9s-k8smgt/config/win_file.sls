@@ -25,55 +25,50 @@ Configure K9s Skins for {{ known_local_user }}:
     - source: salt://{{ tplroot }}/files/skins
 {% endfor %}
 
-{%- for skin_url in k9s_k8smgt.config.skins %}
-{%- set skin_name = skin_url.split('/')[-1] %}
-Download K9s Skin {{ skin_name }}:
+{%- for skin_id, skin_url in k9s_k8smgt.config.skins.items() %}
+{%- set skin_filename = skin_id ~ '.yaml' %}
+Download K9s Skin {{ skin_id }}:
   file.managed:
-    - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\skins\\{{ skin_name }}'
-    - source: {{ skin_url }}
-    - skip_verify: True
     - ignore_errors: True
+    - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\skins\\{{ skin_filename }}'
     - require:
       - file: 'Ensure K9s Skins Directory Exists'
     - require_in:
-      - file: Seed K9s Skins for Future Users
+      - file: 'Seed K9s Skins for Future Users'
+    - skip_verify: True
+    - source: {{ skin_url }}
 
-Notify Failure for {{ skin_name }}:
+Notify Failure for {{ skin_id }}:
   test.configurable_test_state:
-    - name: 'Skin Download Alert'
     - comment: |
         --------------------------------------------------
         SKIN DOWNLOAD WARNING:
         ----------------------
-          The requested URI
+          The skin '{{ skin_id }}' failed to download and
+          could not be cached. Ensure the URI is correct
+          and reachable from this host and update inputs
+          as necessary.
 
-            {{ skin_url }}
-
-          returned an error and could not be cached.
-          Ensure the URI is correct and reachable from
-          this host and update inputs as necessary.
+          Skin URI: '{{ skin_url }}'
         --------------------------------------------------
-    - result: True
+    - name: 'Skin Download Alert'
     - onfail:
-      - file: Download K9s Skin {{ skin_name }}
+      - file: 'Download K9s Skin {{ skin_id }}'
+    - result: True
 {%- endfor %}
 
 Ensure K9s Skins Directory Exists:
   file.directory:
     - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\skins'
     - makedirs: True
-    - user: System
-    - group: Administrators
     - require:
       - archive: 'Extract K9s Bundle'
 
 Seed K9s Config for Future Users:
   file.managed:
-    - group: Administrators
     - makedirs: True
     - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\config.yaml'
     - source: salt://{{ tplroot }}/files/config.yaml
-    - user: System
 
 Seed K9s Skins for Future Users:
   file.recurse:
