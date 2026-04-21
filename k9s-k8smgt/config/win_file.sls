@@ -44,6 +44,8 @@ Seed K9s Config for Future Users:
 
 Seed K9s Skins for Future Users:
   file.recurse:
+    - exclude_pat:
+      - '.gitkeep'
     - makedirs: True
     - name: 'C:\\Users\\Default\\{{ k9s_rel_path }}\\skins'
     - require:
