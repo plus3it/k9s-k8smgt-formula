@@ -10,7 +10,8 @@ values:
     initial_users: Null
     skins:
       - https://raw.githubusercontent.com/catppuccin/k9s/main/dist/catppuccin-mocha.yaml
-      - https://raw.githubusercontent.com/dracula/k9s/master/dist/dracula.yaml
-      - https://raw.githubusercontent.com/nordtheme/k9s/main/dist/nord.yaml
-      - https://raw.githubusercontent.com/tokyo-night/k9s/main/dist/tokyo-night.yaml
+      - https://raw.githubusercontent.com/derailed/k9s/master/skins/dracula.yaml
+      - https://raw.githubusercontent.com/derailed/k9s/master/skins/nord.yaml
+      - https://raw.githubusercontent.com/axkirillov/k9s-tokyonight/main/skin.yml
+      - https://raw.githubusercontent.com/derailed/k9s/master/skins/gruvbox-dark.yaml
 ...
