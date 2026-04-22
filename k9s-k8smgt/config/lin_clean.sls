@@ -10,4 +10,3 @@
 Ensure K9S skeleton directory has been removed:
   file.absent:
     - name: '{{ skel_dir }}'
-    - onlyif: test -d {{ skel_dir }}
