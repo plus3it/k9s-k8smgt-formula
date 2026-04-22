@@ -16,7 +16,7 @@ k9s-k8smgt-subcomponent-config-file-file-managed:
     - source: {{ files_switch(['subcomponent-example.tmpl'],
                               lookup='k9s-k8smgt-subcomponent-config-file-file-managed',
                               use_subpath=True
-                 )
+                  )
               }}
     - mode: 644
     - user: root

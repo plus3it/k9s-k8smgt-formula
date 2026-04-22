@@ -1,5 +1,5 @@
-# The following is meant to illustrate how to use Pillar-data to both override 
-# defaults set in this project's .../parameters/default.yaml and 
+# The following is meant to illustrate how to use Pillar-data to both override
+# defaults set in this project's .../parameters/default.yaml and
 # .../parameters/os_family/* files. See the READEME.Pillar.md file for more-
 # detailed usage-guidance
 
