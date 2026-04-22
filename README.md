@@ -1,52 +1,44 @@
-# repo-template
-Generic repo template for Plus3IT repositories
+# k9s-k8smgt-formula
 
-To use this template:
+A Saltstack formula designed to install and configure the [K9S](https://k9scli.io/) CLI to manage Kubernetes clusters (and to uninstall the CLI, later).
 
-1. Select the green "Use this template" button, or [click here](https://github.com/plus3it/repo-template/generate).
-2. Select the repo Owner, give the repo a name, enter a description, select Public or Private, and click "Create repository from template".
-3. Clone the repository and create a new branch.
-4. Configure the following settings on your new repo.
-    * `GENERAL`
-        * `Features`
-            * Turn off Wikis, Sponsorships, Discussions, and Projects
-        * `Pull Requests`
-            * Turn off Squash Merging
-            * Turn off Rebase Merging
-            * Turn on Allow Auto-Merge
-            * Turn on Automatically delete head branches
-        * `Pushes`
-            * Limit how many branches can be updated in a single push: 2
-    * `COLLABORATORS and TEAMS`
-        * `Manage Access`
-            * Add relevant team roles, for example
-            * `tardigrade-admins` (Admin)
-            * `terraform` (Write)
-            * `releasebot` (Write)
-    * `Branches`
-        * `Create Branch Protection rule` for `main`
-            * Turn on Require pull request before merging
-            * Turn on Require approvals
-            * Turn on Dismiss stale pull requests...
-        * `Required Status Checks`
-            * As relevant to projects, for example
-                * WIP
-                * lint/actionlint
-                * lint/tardigradelint
-                * test / mockstacktest                
-            * Turn on Do not allow bypassing the above settings
-5. Edit the following files to customize them for the new repository:
-    * `LICENSE`
-        * Near the end of the file, edit the date and change the repository name
-    * `CHANGELOG.template.md`
-        * Rename to `CHANGELOG.md`, replacing the repo-template changelog
-        * Edit templated items for the new repo
-    * `.bumpversion.cfg`
-        * Edit the version number for the new repo, ask team if not sure what to
-          start with
-    * `README.md`
-        * Replace contents for the new repo
-    * `.github/`
-        * Inspect dependabot and workflow files in case changes are needed for
-          the new repo
-6. Commit the changes and open a pull request
+It is primarily expected that this formula will be run via [P3](https://www.plus3it.com/)'s "[watchmaker](https://watchmaker.readthedocs.io/en/stable/)" framework.
+
+This formula is able to install the K9s CLI utility on both Linux[^1] and Windows Server[^2] operating environments:
+
+[^1]: As of this README's writing, only Enterprise Linux and related distros (Red Hat and Oracle Enterprise, CentOS Stream, Rocky and Alma Linux). It has only been specifically tested with EL **_9_** variants.
+[^2]: As of this README's writing, this functionality has only been tested on Windows Server 2022
+
+
+## Available states
+
+- [k9s-k8smgt](#k9s-k8smgt)
+- [k9s-k8smgt.clean](#k9s-k8smgt.clean)
+- [k9s-k8smgt.package](#k9s-k8smgt.package)
+- [k9s-k8smgt.package.clean](#k9s-k8smgt.package.clean)
+- [k9s-k8smgt.config](#k9s-k8smgt.config)
+- [k9s-k8smgt.config.clean](#k9s-k8smgt.config.clean)
+
+### k9s-k8smgt
+
+Executes the `package` and `config` states to install and configure the K9S CLI utility for managing Kubernetes clusters. This includes the utility's binaries and user-configuration template files.
+
+### k9s-k8smgt.clean
+
+Executes the `package` and `config` states' `clean` actions to fully uninstall the K9S CLI utility for managing Kubernetes clusters. This includes uninstalling the binaries and user-configuration template files.
+
+### k9s-k8smgt.package
+
+Executes the `package` state to install the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's binaries.
+
+### k9s-k8smgt.package.clean
+
+Executes the `package` state's `clean` function to uninstall the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's binaries.
+
+### k9s-k8smgt.config
+
+Executes the `config` state to install the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's user-configuration template files.
+
+### k9s-k8smgt.config.clean
+
+Executes the `config` state's `clean` function to uninstall the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's user-configuration template files.

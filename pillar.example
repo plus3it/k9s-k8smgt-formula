@@ -1,0 +1,17 @@
+# The following is meant to illustrate how to use Pillar-data to both override
+# defaults set in this project's .../parameters/default.yaml and
+# .../parameters/os_family/* files. See the READEME.Pillar.md file for more-
+# detailed usage-guidance
+
+
+k9s-k8smgt:					# Top level pillar-key
+  lookup:
+    pkg:					# Package-related information
+      name: ''					# Download URI
+  config:					# Configuration-related information
+    initial_users: Null				# List of alread-existing users to configure
+    skins:					# Skin names and URIs to download from
+      <NAME_1>: <URI_1>				#   Entries take the form of:
+      <NAME_2>: <URI_2>				#   <SKIN_NAME>: <DOWNLOAD_URI>
+      ...:      ...
+      <NAME_N>: <URI_N>
