@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.1.1
+
+**Released**: 2026.04.22
+
+**Summary**:
+
+*   Add platform-content for Windows Server targets
+*   Update ELx platform-content to more-closely align to platform-content for Windows Server targets
+*   Adds CI content
+*   Add documentation of Pillar content
+
+
 ### 0.1.0
 
 **Released**: 2026.04.17
