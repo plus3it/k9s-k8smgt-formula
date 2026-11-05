@@ -6,9 +6,7 @@ It is primarily expected that this formula will be run via [P3](https://www.plus
 
 This formula is able to install the K9s CLI utility on both Linux[^1] and Windows Server[^2] operating environments:
 
-[^1]: As of this README's writing, only Enterprise Linux and related distros (Red Hat and Oracle Enterprise, CentOS Stream, Rocky and Alma Linux). It has only been specifically tested with EL **_9_** variants.
-[^2]: As of this README's writing, this functionality has only been tested on Windows Server 2022
-
+**Note:** Pillar-data is _required_ for this formula to function, correctly. This formula does not include any default download URIs. If downloading directly from the internet, the URIs to target are specificed under the GitHub project's [releases](https://github.com/derailed/k9s/releases) page.
 
 ## Available states
 
@@ -42,3 +40,6 @@ Executes the `config` state to install the K9S CLI utility for managing Kubernet
 ### k9s-k8smgt.config.clean
 
 Executes the `config` state's `clean` function to uninstall the K9S CLI utility for managing Kubernetes clusters. This includes only the utility's user-configuration template files.
+
+[^1]: As of this README's writing, only Enterprise Linux and related distros (Red Hat and Oracle Enterprise, CentOS Stream, Rocky and Alma Linux) are supported. Further, it has only been specifically tested with EL **_9_** variants.
+[^2]: As of this README's writing, this functionality has only been tested on Windows Server 2022
